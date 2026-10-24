@@ -67,7 +67,7 @@ PRESETS = {
                                                "mode": BRIDGE_WIDE, "rule": RULE_COUNT, "r": DEFAULT_R, "theta": DEFAULT_THETA, "g": DEFAULT_G},
     "Abkürzungen: der Kipppunkt": {"netztyp": T_RING, "n": 250, "c": DEFAULT_C, "seed": 37, "beta": 50, "inside": DEFAULT_INSIDE, "width": DEFAULT_WIDTH,
                                    "mode": BRIDGE_WIDE, "rule": RULE_COUNT, "r": DEFAULT_R, "theta": DEFAULT_THETA, "g": DEFAULT_G},
-    "Zufallsnetz: ohne Dreiecke geht nichts": {"netztyp": T_RANDOM, "n": DEFAULT_N, "c": 4, "seed": DEFAULT_SEED, "beta": DEFAULT_BETA, "inside": DEFAULT_INSIDE, "width": DEFAULT_WIDTH,
+    "Zufallsnetz: kaum gemeinsame Partner": {"netztyp": T_RANDOM, "n": DEFAULT_N, "c": 4, "seed": DEFAULT_SEED, "beta": DEFAULT_BETA, "inside": DEFAULT_INSIDE, "width": DEFAULT_WIDTH,
                                                "mode": BRIDGE_WIDE, "rule": RULE_COUNT, "r": DEFAULT_R, "theta": DEFAULT_THETA, "g": DEFAULT_G},
     "Gemeinschaften halten auf": {"netztyp": T_COMMUNITIES, "n": DEFAULT_N, "c": 8, "seed": DEFAULT_SEED, "beta": DEFAULT_BETA, "inside": 97, "width": DEFAULT_WIDTH,
                                   "mode": BRIDGE_WIDE, "rule": RULE_COUNT, "r": DEFAULT_R, "theta": DEFAULT_THETA, "g": DEFAULT_G},
@@ -81,7 +81,7 @@ PRESETS = {
 PRESET_HELP = {
     "Ring ohne Abkürzungen (Voreinstellung)": "Regelmäßiger Ring mit sechs Nachbarn, Schwelle 2: die Ansteckung wandert Runde für Runde um den Ring.",
     "Abkürzungen: der Kipppunkt": "Ring mit 50 % Abkürzungen: die einfache Ansteckung wäre in wenigen Runden fertig, die Schwelle 2 bleibt in den meisten Läufen stecken (dieser Zufalls-Seed zeigt so einen Lauf; ein anderer kann das Netz füllen).",
-    "Zufallsnetz: ohne Dreiecke geht nichts": "Zufallsnetz mit vier Partnern je Betrieb: zwei Partner eines Betriebs haben fast nie einen gemeinsamen Partner, die Schwelle 2 stockt sofort.",
+    "Zufallsnetz: kaum gemeinsame Partner": "Zufallsnetz mit vier Partnern je Betrieb: zwei Partner eines Betriebs haben fast nie einen gemeinsamen Partner, die Schwelle 2 stockt sofort.",
     "Gemeinschaften halten auf": "Sechs Verbünde mit 97 % der Kanten innen: die Schwelle 2 füllt den eigenen Verbund und kommt nicht über die Grenze.",
     "Brücke zu schmal": "Zwei dichte Gruppen, verbunden durch eine einzige Kante: eine einfache Ansteckung geht hinüber, die Schwelle 2 nicht.",
     "Anteilsregel: Hubs sind schwer zu überzeugen": "Ein Anteil von 34 % der Partner: Knoten mit vielen Partnern brauchen viele Übernehmer, die Ausbreitung bleibt in der Startgruppe.",

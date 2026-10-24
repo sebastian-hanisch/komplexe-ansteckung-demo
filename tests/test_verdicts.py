@@ -151,7 +151,7 @@ def test_verdict_watts_compares_inside_and_outside_of_the_window():
             {"z": 4.0, "frac": 0.7, "size": 0.9, "margin": 2.9, "runs": 100}, {"z": 8.0, "frac": 0.2, "size": NAN, "margin": -5.0, "runs": 100}]
     kind, text = ev.verdict_watts(rows)
     assert kind == "info" and f"für {ev.de(lo, 2)} < z < {ev.de(hi, 2)} voraus" in text and "(K* = 5)" in text
-    assert "innerhalb dieses Fensters im Mittel 80 % der Einzelstarter" in text and "außerhalb 10 %." in text
+    assert "innerhalb dieses Fensters im Mittel 80 % der Einzelstarter" in text and "außerhalb 10 % (Mittel über die gewählten Messpunkte" in text
     assert ev.verdict_watts(rows[1:3])[0] == "warning" and ev.verdict_watts(rows, theta=0.5)[0] == "warning"
     assert ev.verdict_watts([r for r in rows if r["z"] < 3])[0] == "warning"
 

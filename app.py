@@ -109,7 +109,7 @@ st.markdown(
     """
 **Sechstes Stück** der Reihe „Netzwerkanalyse“, im Ausbreitungs-Arm die Fortsetzung von Stück 5 (Einflussmaximierung): Eine Nachricht verbreitet sich schon, wenn ein Partner sie weitergibt. Ein **Verfahrenswechsel** („wir stellen erst um, wenn zwei Partner es tun“) braucht mehrere. In einem Netz von Subunternehmern und Lieferanten übernimmt ein Betrieb das neue Verfahren, sobald mindestens ***r*** seiner Partner es getan haben, oder ein Anteil **θ** seiner Partner. Eine **Startgruppe** (ein Betrieb und seine Partner) beginnt. Die Demo stellt die **einfache Ansteckung** (*r* = 1) der **komplexen** (*r* = 2, 3 oder Anteil θ) gegenüber.
 
-Die Kernfrage: **Wann reicht ein Kontakt, wann braucht es mehrere, und woran hängt es?** Der Befund hängt an der **Breite** der Verbindungen, nicht an ihrer Länge: eine einzige Brücke trägt die einfache, aber nicht die komplexe Ansteckung. Anders als die Fall-Demos zeigt diese Demo **ein** Modell an einem wachsenden Beispiel; die Ergebnisse sind **Modellbefunde**, keine Aussagen über die Wirklichkeit.
+Die Kernfrage: **Wann reicht ein Kontakt, wann braucht es mehrere, und woran hängt es?** Der Befund hängt an der **Breite** der Verbindungen (mehrere gemeinsame Partner), nicht an der bloßen Zahl der Kanten: eine einzige Brücke trägt die einfache, aber nicht die komplexe Ansteckung. Anders als die Fall-Demos zeigt diese Demo **ein** Modell an einem wachsenden Beispiel; die Ergebnisse sind **Modellbefunde**, keine Aussagen über die Wirklichkeit.
 
 Weiter unten: fünf Experimente (**🔬**), der Abschnitt **🚧 Wo die Annahmen enden** und der Expander **📐 Mathematische Formulierung**.
 """
@@ -131,7 +131,7 @@ with st.expander("So funktioniert die Schwellenregel", expanded=True):
 |---|---|
 | **Einfache Ansteckung** | Schwelle *r* = 1: ein übernommener Partner genügt. Das ist reine Erreichbarkeit im Netz. |
 | **Komplexe Ansteckung** | Schwelle *r* ≥ 2 oder ein Anteil θ der Partner: mehrere Quellen sind nötig. |
-| **Dreiecke** | Zwei Partner eines Betriebs, die auch miteinander Partner sind. Die Schwelle 2 wandert fast nur über Dreiecke. |
+| **Dreiecke** | Zwei Partner eines Betriebs, die auch miteinander Partner sind. Gemeinsame Partner erleichtern die Schwelle 2; Dreiecke sind dafür nicht notwendig. |
 | **Kipppunkt** | Der Anteil Abkürzungen im Ring, ab dem die Schwelle 2 das Netz in höchstens der Hälfte der Läufe füllt (Experiment 2). |
 | **Brückenbreite** | Zahl der Partner, über die ein Betrieb auf der anderen Seite einer Brücke erreicht wird (Experiment 5). |
 | **Kaskadenfenster** | Bereich des mittleren Grads, in dem ein einzelner Startknoten bei Anteilsregel eine große Kaskade auslösen kann (Experiment 3, nach Watts). |
@@ -268,7 +268,7 @@ experiment("communities", "Gemeinschaften messen", (n_exp, g_exp, rule, int(r), 
 
 st.markdown("---")
 
-st.subheader("🔬 Experiment 5: Breite statt Länge der Brücke")
+st.subheader("🔬 Experiment 5: Breite der Brücke")
 st.caption(f"Zwei Gruppen mit n = {n_exp - n_exp % 2} Betrieben, c = {c_exp} Partnern innerhalb jeder Gruppe, Start in der ersten Gruppe (g = {g_exp}); Brücke der Breite *w* = {C.BRIDGE_WIDTHS[0]} bis {C.BRIDGE_WIDTHS[-1]}, "
            "„breit“: *w* Tor-Knoten je Seite vollständig verbunden, „verteilt“: dieselben *w* · *w* Kanten mit verschiedenen Enden. Gezählt: Läufe, in denen mindestens die Hälfte der anderen Gruppe übernimmt.")
 

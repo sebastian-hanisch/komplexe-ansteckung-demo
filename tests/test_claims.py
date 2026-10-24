@@ -98,7 +98,7 @@ def test_edges_with_a_common_partner_by_networkx():
             vals.append(np.mean([any(True for _ in nx.common_neighbors(g, a, b)) for a, b in g.edges()]))
         shares[label] = float(np.median(vals))
     assert [round(shares[label], 2) for label in LABELS] == [1.0, 0.95, 1.0, 0.36, 0.12, 0.35, 0.54]
-    # Dreiecke sind nötig, aber ihr Anteil allein sagt den Befund nicht voraus: das Potenzgesetz-Netz hat mehr als Verbünde und skalenfreies Netz und füllt seltener
+    # gemeinsame Partner erleichtern die Schwelle 2, aber ihr Anteil allein sagt den Befund nicht voraus: das Potenzgesetz-Netz hat mehr als Verbünde und skalenfreies Netz und füllt seltener
     assert shares[POWER] > shares[COMM] and _types()[POWER][2]["full"] < _types()[COMM][2]["full"]
 
 
@@ -224,7 +224,7 @@ def test_default_network_and_presets():
     assert (d.inst.n, d.inst.m, len(d.seeds), d.spread.count, d.spread.rounds, d.reference.rounds) == (150, 450, 5, 150, 36, 24) and d.compare["r = 3"].rounds == 72
     k = _preset("Abkürzungen: der Kipppunkt")
     assert (k.inst.n, k.inst.m, k.spread.count, k.spread.rounds, len(k.short), k.reference.count, k.reference.rounds) == (250, 750, 9, 2, 26, 250, 4)
-    z = _preset("Zufallsnetz: ohne Dreiecke geht nichts")
+    z = _preset("Zufallsnetz: kaum gemeinsame Partner")
     assert (z.inst.m, z.spread.count, z.spread.rounds, len(z.short), z.reference.count, z.reference.rounds) == (300, 7, 1, 25, 147, 5)
     g = _preset("Gemeinschaften halten auf")
     assert (g.inst.m, g.spread.count, g.spread.rounds, len(g.short), g.reference.count, g.start_share, g.other_share) == (626, 25, 3, 5, 150, 1.0, 0.0)

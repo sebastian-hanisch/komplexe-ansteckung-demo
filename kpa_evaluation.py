@@ -221,7 +221,7 @@ def tipping_beta(rows: list[dict], r, level=0.5):
 
 
 def verdict_shortcuts(rows: list[dict]) -> tuple[str, str]:
-    """Verdikt zu E2: Abkürzungen beschleunigen die einfache Ansteckung; die Schwelle 2 verlangt Dreiecke und kippt."""
+    """Verdikt zu E2: Abkürzungen beschleunigen die einfache Ansteckung; die Schwelle 2 braucht gemeinsame Partner und kippt."""
     if len(rows) < 2:
         return "warning", "Zu wenige Messpunkte."
     first, last = rows[0], rows[-1]
@@ -234,7 +234,7 @@ def verdict_shortcuts(rows: list[dict]) -> tuple[str, str]:
         text += f"Bei r = 2 sinkt sie zunächst von {de(r2[0][1], 0)} auf {de(best[1], 0)} (β = {de(100 * best[0], 0)} %). "
     if tip is not None:
         text += (f"Ab β = {de(100 * tip, 0)} % füllt die Ausbreitung mit r = 2 das Netz in höchstens der Hälfte der Läufe (Endanteil dort {de(100 * next(r['cells'][2]['share'] for r in rows if r['beta'] == tip), 0)} %): "
-                 "die Abkürzungen zerstören die Dreiecke, auf die sie angewiesen ist.")
+                 "die Abkürzungen nehmen die gemeinsamen Partner, auf die sie angewiesen ist.")
     else:
         text += "Im untersuchten Bereich bleibt r = 2 vollständig."
     return "info", text
@@ -269,7 +269,7 @@ def verdict_watts(rows: list[dict], theta=C.WATTS_THETA) -> tuple[str, str]:
     if not inside or not outside:
         return "warning", "Die Messpunkte liegen nicht beiderseits des Fensters."
     return "info", (f"Die Formel (K* = {A.vulnerable_max_degree(theta)}) sagt Kaskaden für {de(window[0], 2)} < z < {de(window[1], 2)} voraus. Gemessen lösen innerhalb dieses Fensters im Mittel "
-                    f"{de(100 * float(np.mean(inside)), 0)} % der Einzelstarter eine Kaskade über 5 % der Knoten aus, außerhalb {de(100 * float(np.mean(outside)), 0)} %. "
+                    f"{de(100 * float(np.mean(inside)), 0)} % der Einzelstarter eine Kaskade über 5 % der Knoten aus, außerhalb {de(100 * float(np.mean(outside)), 0)} % (Mittel über die gewählten Messpunkte; am Rand verschwimmt das Fenster). "
                     "Zu wenige Partner: der Start steckt in einem Stück fest. Zu viele: jeder Partner hat so viele Partner, dass ein einzelner nicht mehr überzeugt.")
 
 
@@ -340,7 +340,7 @@ def first_crossing(rows: list[dict], mode, r):
 
 
 def verdict_bridge(rows: list[dict]) -> tuple[str, str]:
-    """Verdikt zu E5: eine breite Brücke trägt die Schwelle r ab Breite r; dieselbe Kantenzahl mit verschiedenen Enden trägt sie nicht."""
+    """Verdikt zu E5: eine breite Brücke führt die Schwelle r ab einer Breite in die andere Gruppe (gemessen); dieselbe Kantenzahl mit verschiedenen Enden trägt sie nicht."""
     if not rows:
         return "warning", "Keine Läufe."
     modes = [m for m in C.BRIDGE_MODES if any(x["mode"] == m for x in rows)]

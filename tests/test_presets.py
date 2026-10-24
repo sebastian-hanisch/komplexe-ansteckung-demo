@@ -53,7 +53,7 @@ def test_each_preset_shows_what_its_name_says():
     assert full["Ring ohne Abkürzungen (Voreinstellung)"].spread.share == 1.0 and full["Ring ohne Abkürzungen (Voreinstellung)"].spread.rounds > full["Ring ohne Abkürzungen (Voreinstellung)"].reference.rounds
     tip = full["Abkürzungen: der Kipppunkt"]
     assert tip.spread.share < 0.2 and tip.reference.share == 1.0                                # r = 1 füllt, r = 2 steckt fest
-    rnd = full["Zufallsnetz: ohne Dreiecke geht nichts"]
+    rnd = full["Zufallsnetz: kaum gemeinsame Partner"]
     assert rnd.spread.share < 0.2 and rnd.reference.share >= C.FULL_SHARE                              # einzelne Betriebe ohne Verbindung bleiben auch bei r = 1 draußen
     com = full["Gemeinschaften halten auf"]
     assert com.start_share == 1.0 and com.other_share == 0.0 and com.reference.share == 1.0     # der eigene Verbund ist voll, außerhalb nichts
